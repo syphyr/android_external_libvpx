@@ -110,6 +110,14 @@ TEST_P(InvalidFileTest, ReturnCode) {
   RunTest();
 }
 
+#if CONFIG_VP8_DECODER
+const DecodeParam kVP8InvalidFileTests[] = {
+  { 1, "invalid-bug-1443.ivf" },
+};
+VP8_INSTANTIATE_TEST_CASE(InvalidFileTest,
+                          ::testing::ValuesIn(kVP8InvalidFileTests));
+#endif  // CONFIG_VP8_DECODER
+
 const DecodeParam kVP9InvalidFileTests[] = {
   {1, "invalid-vp90-02-v2.webm"},
 #if CONFIG_VP9_HIGHBITDEPTH
